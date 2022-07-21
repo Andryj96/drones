@@ -1,0 +1,34 @@
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+.DS_Store
+
+
+#############
+## Python
+#############
+
+*.py[co]
+
+# Packages
+*.egg
+*.egg-info
+dist/
+build/
+eggs/
+parts/
+var/
+sdist/
+develop-eggs/
+.installed.cfg
+
+pip-log.txt
+
+.coverage
+.tox
+
+.env
+
+# vs code config
+.vscode
