@@ -1,0 +1,37 @@
+version: "3.7"
+
+services:
+  postgres:
+    image: postgres:13.7-alpine
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  backend:
+    build: .
+    command: sh -c '/code/start.sh'
+    volumes:
+      - .:/code
+      - drones-static:/code/static
+      - drones-media:/code/media
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=True
+      - SECRET_KEY=xxxxx
+      - POSTGRES_SERVICE_HOST=postgres
+      - POSTGRES_SERVICE_PORT=5432
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+    depends_on:
+      - postgres
+
+volumes:
+  pg-data:
+  drones-static:
+  drones-media:
