@@ -2,3 +2,4 @@
 celery*.bak
 celery*.dat
 celery*.dir
+env
