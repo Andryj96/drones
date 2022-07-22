@@ -17,7 +17,7 @@ class MedicationSerializer(serializers.ModelSerializer):
         fields = ['uuid', 'name', 'weight', 'code',
                   'image', 'created_at', 'updated_at']
 
-    def validate_code(self, name):
+    def validate_name(self, name):
         allowed = string.ascii_letters+string.digits+'_'+'-'
 
         if not re.match(r'^[%s]+$' % allowed, name):
