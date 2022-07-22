@@ -17,4 +17,5 @@ urlpatterns = [
          views.LoadedMedications.as_view({'get': 'list'}),
          name='loaded-medications',
          ),
+    path('celery-test', views.celery_test_view, name='celery-test'),
 ]

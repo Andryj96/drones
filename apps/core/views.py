@@ -2,6 +2,8 @@ from rest_framework import viewsets, generics, response, views
 from apps.core import models, serializers
 from apps.core.utils import is_valid_uuid
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.decorators import api_view
+from drones.celery import debug_task
 
 
 class Drones(generics.ListCreateAPIView, viewsets.GenericViewSet):
@@ -93,3 +95,9 @@ class LoadedMedications(generics.ListAPIView, viewsets.GenericViewSet):
         )
 
         return qs
+
+
+@api_view()
+def celery_test_view(request):
+    debug_task.delay()
+    return response.Response({"message": "Your task is being processed!"})
