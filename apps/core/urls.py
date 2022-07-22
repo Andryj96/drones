@@ -9,4 +9,5 @@ router.register(r'drones/available', views.AvailableDrones)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('drones/battery/<uuid>/', views.GetDroneBatteryLevel.as_view()),
 ]

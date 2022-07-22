@@ -1,4 +1,4 @@
-from rest_framework import viewsets, generics
+from rest_framework import viewsets, generics, response, views
 from apps.core import models, serializers
 
 
@@ -28,3 +28,17 @@ class AvailableDrones(generics.ListAPIView, viewsets.GenericViewSet):
         battery__gte=25
     )
     serializer_class = serializers.DroneSerializer
+
+
+class GetDroneBatteryLevel(views.APIView):
+    """
+    Get the battery level of a drone.
+    """
+
+    def get(self, request, uuid):
+        try:
+            drone = models.Drone.objects.values('battery').get(uuid=uuid)
+        except Exception:
+            return response.Response(status=404)
+
+        return response.Response({'battery': drone['battery']})
