@@ -1,0 +1,232 @@
+[
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$320000$9yEi0bhEHToNY9MntlrkX1$KiYj12zh4M+jvaFSdYcfSNwOpDzfuZM7ctexG2Cr3m8=",
+            "last_login": "2022-07-22T17:13:41.296Z",
+            "is_superuser": true,
+            "username": "admin_drones",
+            "first_name": "",
+            "last_name": "",
+            "email": "admin_drones@gmail.com",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2022-07-21T19:43:52.907Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "core.drone",
+        "pk": 1,
+        "fields": {
+            "uuid": "15185f0f-9332-4d4e-95a4-9dd99e733c8e",
+            "created_at": "2022-07-22T04:48:13.031Z",
+            "updated_at": "2022-07-22T04:48:13.031Z",
+            "serial_no": "A133-02",
+            "model": "Lightweight",
+            "weight_limit": 100,
+            "battery": 100,
+            "state": "IDLE"
+        }
+    },
+    {
+        "model": "core.drone",
+        "pk": 2,
+        "fields": {
+            "uuid": "007caa8e-cd01-41e8-bc95-bc7592580104",
+            "created_at": "2022-07-22T04:48:38.842Z",
+            "updated_at": "2022-07-22T04:48:38.842Z",
+            "serial_no": "A44B",
+            "model": "Middleweight",
+            "weight_limit": 200,
+            "battery": 80,
+            "state": "IDLE"
+        }
+    },
+    {
+        "model": "core.drone",
+        "pk": 3,
+        "fields": {
+            "uuid": "1e46cf09-a243-4869-928a-debc2edd7193",
+            "created_at": "2022-07-22T04:49:03.581Z",
+            "updated_at": "2022-07-22T04:49:03.581Z",
+            "serial_no": "A14B_12",
+            "model": "Heavyweight",
+            "weight_limit": 500,
+            "battery": 22,
+            "state": "IDLE"
+        }
+    },
+    {
+        "model": "core.drone",
+        "pk": 4,
+        "fields": {
+            "uuid": "122fc3cf-f595-434b-923d-32926668366b",
+            "created_at": "2022-07-22T04:49:17.738Z",
+            "updated_at": "2022-07-22T04:49:17.738Z",
+            "serial_no": "A14B_13",
+            "model": "Heavyweight",
+            "weight_limit": 500,
+            "battery": 50,
+            "state": "IDLE"
+        }
+    },
+    {
+        "model": "core.drone",
+        "pk": 5,
+        "fields": {
+            "uuid": "5b0ad29d-aba0-4463-8fcd-01ef3c59fcf3",
+            "created_at": "2022-07-22T04:49:35.151Z",
+            "updated_at": "2022-07-22T04:49:35.151Z",
+            "serial_no": "A14B_14",
+            "model": "Heavyweight",
+            "weight_limit": 500,
+            "battery": 70,
+            "state": "RETURNING"
+        }
+    },
+    {
+        "model": "core.drone",
+        "pk": 6,
+        "fields": {
+            "uuid": "d5fdcf8d-2b3c-4274-88c2-132ef499e6a0",
+            "created_at": "2022-07-22T04:49:58.416Z",
+            "updated_at": "2022-07-22T04:49:58.416Z",
+            "serial_no": "A120_01",
+            "model": "Cruiserweight",
+            "weight_limit": 400,
+            "battery": 100,
+            "state": "IDLE"
+        }
+    },
+    {
+        "model": "core.medication",
+        "pk": 1,
+        "fields": {
+            "uuid": "78d6ae39-8ff8-4cb7-9fb3-71baa3e982ca",
+            "created_at": "2022-07-22T04:52:19.107Z",
+            "updated_at": "2022-07-22T04:52:19.107Z",
+            "name": "Acetaminophen",
+            "weight": 100,
+            "code": "ACTP",
+            "image": "medication/descarga.jfif"
+        }
+    },
+    {
+        "model": "core.medication",
+        "pk": 3,
+        "fields": {
+            "uuid": "cd50f798-b37f-41f5-8766-a1838961abbd",
+            "created_at": "2022-07-22T19:19:49.101Z",
+            "updated_at": "2022-07-22T19:19:49.101Z",
+            "name": "Aspirin",
+            "weight": 80,
+            "code": "ASP",
+            "image": "medication/descarga.jfif"
+        }
+    },
+    {
+        "model": "core.dronelog",
+        "pk": 1,
+        "fields": {
+            "uuid": "abdd458a-ae25-4f4f-8310-6aee3c2e1636",
+            "created_at": "2022-07-22T18:34:00.055Z",
+            "updated_at": "2022-07-22T18:50:55.615Z",
+            "drone": 1,
+            "history": [
+                {
+                    "state": "IDLE",
+                    "baterry": 100,
+                    "datetime": "2022-07-22T18:34:00.058Z"
+                }
+            ]
+        }
+    },
+    {
+        "model": "core.dronelog",
+        "pk": 2,
+        "fields": {
+            "uuid": "22e019f2-f05e-4be6-a958-da549933c1fc",
+            "created_at": "2022-07-22T18:34:00.063Z",
+            "updated_at": "2022-07-22T18:50:55.622Z",
+            "drone": 2,
+            "history": [
+                {
+                    "state": "IDLE",
+                    "baterry": 80,
+                    "datetime": "2022-07-22T18:34:00.091Z"
+                }
+            ]
+        }
+    },
+    {
+        "model": "core.dronelog",
+        "pk": 3,
+        "fields": {
+            "uuid": "c707185b-f59f-4d9e-9c42-c80581ca63cc",
+            "created_at": "2022-07-22T18:34:00.094Z",
+            "updated_at": "2022-07-22T18:50:55.632Z",
+            "drone": 3,
+            "history": [
+                {
+                    "state": "IDLE",
+                    "baterry": 22,
+                    "datetime": "2022-07-22T18:34:00.122Z"
+                }
+            ]
+        }
+    },
+    {
+        "model": "core.dronelog",
+        "pk": 4,
+        "fields": {
+            "uuid": "f8eec9c9-40ee-4f38-a459-f66e012510d3",
+            "created_at": "2022-07-22T18:34:00.126Z",
+            "updated_at": "2022-07-22T18:50:55.640Z",
+            "drone": 4,
+            "history": [
+                {
+                    "state": "IDLE",
+                    "baterry": 50,
+                    "datetime": "2022-07-22T18:34:00.154Z"
+                }
+            ]
+        }
+    },
+    {
+        "model": "core.dronelog",
+        "pk": 5,
+        "fields": {
+            "uuid": "be6a8656-78cd-410a-901f-09db330cb4cc",
+            "created_at": "2022-07-22T18:34:00.158Z",
+            "updated_at": "2022-07-22T18:50:55.648Z",
+            "drone": 5,
+            "history": [
+                {
+                    "state": "RETURNING",
+                    "baterry": 70,
+                    "datetime": "2022-07-22T18:34:00.186Z"
+                }
+            ]
+        }
+    },
+    {
+        "model": "core.dronelog",
+        "pk": 6,
+        "fields": {
+            "uuid": "93446de8-073f-4a05-a1cc-54383364c2fc",
+            "created_at": "2022-07-22T18:34:00.189Z",
+            "updated_at": "2022-07-22T18:50:55.656Z",
+            "drone": 6,
+            "history": [
+                {
+                    "state": "IDLE",
+                    "baterry": 100,
+                    "datetime": "2022-07-22T18:34:00.219Z"
+                }
+            ]
+        }
+    }
+]
