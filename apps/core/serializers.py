@@ -1,7 +1,7 @@
 import re
 import string
 from rest_framework import serializers
-from apps.core.models import DRONE_STATUS, Drone, Medication, LoadedMedication
+from apps.core.models import DRONE_STATUS, Drone, DroneLog, Medication, LoadedMedication
 
 
 class DroneSerializer(serializers.ModelSerializer):
@@ -102,3 +102,16 @@ class DroneLoadingSerializer(serializers.Serializer):
         self.instance = load
 
         return self.instance
+
+
+class DroneLogSerializer(serializers.ModelSerializer):
+    drone = serializers.SlugRelatedField(
+        slug_field='uuid',
+        read_only=True,
+    )
+    drone_name = serializers.StringRelatedField(source='drone')
+
+    class Meta:
+        model = DroneLog
+        fields = ['uuid', 'drone', 'drone_name',
+                  'history', 'created_at', 'updated_at']

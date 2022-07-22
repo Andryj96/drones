@@ -7,6 +7,7 @@ router.register(r'drones/list', views.Drones)
 router.register(r'drones/detail', views.DroneDetail)
 router.register(r'drones/available', views.AvailableDrones)
 router.register(r'drones/load', views.DroneLoading)
+router.register(r'drones/log', views.DroneLogs)
 router.register(r'medications/list', views.Medications)
 
 urlpatterns = [

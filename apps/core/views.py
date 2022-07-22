@@ -101,3 +101,17 @@ class LoadedMedications(generics.ListAPIView, viewsets.GenericViewSet):
 def celery_test_view(request):
     debug_task.delay()
     return response.Response({"message": "Your task is being processed!"})
+
+
+class DroneLogs(generics.ListAPIView, viewsets.GenericViewSet):
+    """
+    Battery level History for all drones.
+
+    """
+    queryset = models.DroneLog.objects.all()
+    serializer_class = serializers.DroneLogSerializer
+    filter_backends = [DjangoFilterBackend]
+    filerset_fields = {
+        'drone__uuid': ['exact'],
+        'updated_at': ['gte', 'lte'],
+    }
