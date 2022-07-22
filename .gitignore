@@ -32,3 +32,8 @@ pip-log.txt
 
 # vs code config
 .vscode
+
+# celery
+celery*.bak
+celery*.dat
+celery*.dir
