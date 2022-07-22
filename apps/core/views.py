@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from rest_framework import viewsets, generics
+from apps.core import models, serializers
 
-# Create your views here.
+
+class Drones(generics.ListCreateAPIView, viewsets.GenericViewSet):
+    queryset = models.Drone.objects.all()
+    serializer_class = serializers.DroneSerializer
