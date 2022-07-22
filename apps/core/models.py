@@ -76,21 +76,21 @@ class Medication(GenericModel):
         return self.name
 
 
-class MedicationCharged(GenericModel):
+class LoadedMedication(GenericModel):
     drone = models.ForeignKey(
         Drone,
-        related_name='medication_charged',
+        related_name='medication_loaded',
         on_delete=models.CASCADE,
     )
     medications = models.ManyToManyField(
         Medication,
-        related_name='medication_charged',
+        related_name='medication_loaded',
     )
     delivered = models.BooleanField(default=False)
 
     class Meta:
-        verbose_name = 'Medication Charged'
-        verbose_name_plural = 'Medications Charged'
+        verbose_name = 'Loaded Medication'
+        verbose_name_plural = 'Loaded Medications'
 
     def __str__(self):
         return f'{self.drone} - {self.created_at}'
