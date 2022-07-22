@@ -51,3 +51,17 @@ class Medications(viewsets.ModelViewSet):
     queryset = models.Medication.objects.all()
     serializer_class = serializers.MedicationSerializer
     lookup_field = 'uuid'
+
+
+class DroneLoading(generics.CreateAPIView, viewsets.GenericViewSet):
+    """
+    Loading a drone with medication items.
+
+    The drone must be in IDLE state and battery level up or equal to 25%.
+    and the total weight of the medication items must be less than the drone weight limit.
+
+    There are no medications loaded without delivery for this drone (Consider field `delivered`
+    in LoadedMedication Model checked when the load was delivered).
+    """
+    queryset = models.LoadedMedication.objects.all()
+    serializer_class = serializers.DroneLoadingSerializer
