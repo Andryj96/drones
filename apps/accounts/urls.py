@@ -1,7 +1,5 @@
 from django.conf import settings
 from django.urls import include, path
-from apps.accounts import views
-from rest_framework import routers
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,

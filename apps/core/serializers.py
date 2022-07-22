@@ -7,15 +7,15 @@ from apps.core.models import Drone, Medication
 class DroneSerializer(serializers.ModelSerializer):
     class Meta:
         model = Drone
-        field = ['uuid', 'serial_no', 'model', 'weight_limit',
-                 'battery', 'state', 'created_at', 'updated_at']
+        fields = ['uuid', 'serial_no', 'model', 'weight_limit',
+                  'battery', 'state', 'created_at', 'updated_at']
 
 
 class MedicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Medication
-        field = ['uuid', 'name', 'weight', 'code',
-                 'image', 'created_at', 'updated_at']
+        fields = ['uuid', 'name', 'weight', 'code',
+                  'image', 'created_at', 'updated_at']
 
     def validate_code(self, name):
         allowed = string.ascii_letters+string.digits+'_'+'-'
