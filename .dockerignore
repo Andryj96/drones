@@ -1,0 +1,4 @@
+.pytest_cache
+celery*.bak
+celery*.dat
+celery*.dir

@@ -5,10 +5,8 @@ services:
     image: postgres:13.7-alpine
     volumes:
       - pg-data:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+    env_file:
+      - test.env
 
   backend:
     build: .
@@ -19,19 +17,37 @@ services:
       - drones-media:/code/media
     ports:
       - "8000:8000"
-    environment:
-      - DEBUG=True
-      - SECRET_KEY=xxxxx
-      - POSTGRES_SERVICE_HOST=postgres
-      - POSTGRES_SERVICE_PORT=5432
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+    env_file:
+      - test.env
 
     depends_on:
       - postgres
+
+  celery-worker:
+    build: .
+    command: celery -A drones worker -l info
+    env_file:
+      - test.env
+    depends_on:
+      - celery-beat
+      - postgres
+
+  celery-beat:
+    build: .
+    command: celery -A drones beat
+    env_file:
+      - test.env
+
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:7.0.4-alpine
+    volumes:
+      - redis-data:/data
 
 volumes:
   pg-data:
   drones-static:
   drones-media:
+  redis-data:
