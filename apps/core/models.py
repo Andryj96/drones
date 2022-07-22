@@ -47,8 +47,8 @@ class Drone(GenericModel):
     )
     state = models.CharField(
         choices=DRONE_STATUS.choices,
-        max_length=15,
         default=DRONE_STATUS.IDLE,
+        max_length=15,
     )
 
     class Meta:

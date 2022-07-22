@@ -1,6 +1,7 @@
 from rest_framework import viewsets, generics, response, views
 from apps.core import models, serializers
 from apps.core.utils import is_valid_uuid
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 class Drones(generics.ListCreateAPIView, viewsets.GenericViewSet):
@@ -9,6 +10,8 @@ class Drones(generics.ListCreateAPIView, viewsets.GenericViewSet):
     """
     queryset = models.Drone.objects.all()
     serializer_class = serializers.DroneSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['serial_no', 'model', 'state']
 
 
 class DroneDetail(generics.RetrieveUpdateDestroyAPIView, viewsets.GenericViewSet):
@@ -51,6 +54,8 @@ class Medications(viewsets.ModelViewSet):
     """
     queryset = models.Medication.objects.all()
     serializer_class = serializers.MedicationSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['code', 'name']
     lookup_field = 'uuid'
 
 
@@ -74,6 +79,8 @@ class LoadedMedications(generics.ListAPIView, viewsets.GenericViewSet):
     """
     queryset = models.LoadedMedication.objects.all()
     serializer_class = serializers.DroneLoadingSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['delivered', ]
 
     def get_queryset(self):
         qs = super().get_queryset()
