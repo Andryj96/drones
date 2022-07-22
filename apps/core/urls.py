@@ -12,4 +12,9 @@ router.register(r'medications/list', views.Medications)
 urlpatterns = [
     path('', include(router.urls)),
     path('drones/battery/<uuid>/', views.GetDroneBatteryLevel.as_view()),
+    path('drones/battery/<uuid>/', views.GetDroneBatteryLevel.as_view()),
+    path('medications/loaded/<uuid>/',
+         views.LoadedMedications.as_view({'get': 'list'}),
+         name='loaded-medications',
+         ),
 ]

@@ -1,5 +1,6 @@
 from rest_framework import viewsets, generics, response, views
 from apps.core import models, serializers
+from apps.core.utils import is_valid_uuid
 
 
 class Drones(generics.ListCreateAPIView, viewsets.GenericViewSet):
@@ -65,3 +66,23 @@ class DroneLoading(generics.CreateAPIView, viewsets.GenericViewSet):
     """
     queryset = models.LoadedMedication.objects.all()
     serializer_class = serializers.DroneLoadingSerializer
+
+
+class LoadedMedications(generics.ListAPIView, viewsets.GenericViewSet):
+    """
+    List all loaded medications for a given drone .
+    """
+    queryset = models.LoadedMedication.objects.all()
+    serializer_class = serializers.DroneLoadingSerializer
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+
+        drone_uuid = self.kwargs['uuid'] if is_valid_uuid(
+            self.kwargs['uuid']) else None
+
+        qs = qs.filter(
+            drone__uuid=drone_uuid
+        )
+
+        return qs
