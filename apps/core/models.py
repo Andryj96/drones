@@ -102,7 +102,7 @@ class DroneLog(GenericModel):
         on_delete=models.CASCADE,
         related_name='drone_log',
     )
-    battery_history = models.JSONField(
+    history = models.JSONField(
         default=list,
         blank=True,
         encoder=DjangoJSONEncoder,
