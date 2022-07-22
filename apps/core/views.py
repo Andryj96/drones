@@ -42,3 +42,12 @@ class GetDroneBatteryLevel(views.APIView):
             return response.Response(status=404)
 
         return response.Response({'battery': drone['battery']})
+
+
+class Medications(viewsets.ModelViewSet):
+    """
+    List, create, retrieve, update or destroy medications.
+    """
+    queryset = models.Medication.objects.all()
+    serializer_class = serializers.MedicationSerializer
+    lookup_field = 'uuid'
