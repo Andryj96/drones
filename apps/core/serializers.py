@@ -41,12 +41,14 @@ class DroneLoadingSerializer(serializers.Serializer):
     drone = serializers.SlugRelatedField(
         slug_field='uuid',
         queryset=Drone.objects.all(),
+        help_text='drone uuid',
     )
     drone_name = serializers.StringRelatedField(source='drone')
     medications = serializers.SlugRelatedField(
         slug_field='uuid',
         queryset=Medication.objects.all(),
         many=True,
+        help_text='list of medications uuids',
     )
     medications_data = serializers.SerializerMethodField()
     created_at = serializers.DateTimeField(read_only=True)

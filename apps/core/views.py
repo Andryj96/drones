@@ -9,6 +9,7 @@ from drones.celery import debug_task
 class Drones(generics.ListCreateAPIView, viewsets.GenericViewSet):
     """
     List all drones, or create a new drone.
+
     """
     queryset = models.Drone.objects.all()
     serializer_class = serializers.DroneSerializer
@@ -70,6 +71,15 @@ class DroneLoading(generics.CreateAPIView, viewsets.GenericViewSet):
 
     There are no medications loaded without delivery for this drone (Consider field `delivered`
     in LoadedMedication Model checked when the load was delivered).
+
+    Reuqest Body: 
+    {
+        "drone": "string (uuid)",
+        "medications": [
+            "string (uuid)",
+            "string (uuid)",
+        ]
+    }
     """
     queryset = models.LoadedMedication.objects.all()
     serializer_class = serializers.DroneLoadingSerializer

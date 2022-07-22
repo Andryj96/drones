@@ -16,6 +16,7 @@ urlpatterns = [
         title="Drones API",
         description="Drones API requests and descriptions",
         version="1.0.0",
+        public=True,
         permission_classes=[],
     ), name='openapi-schema'),
 
