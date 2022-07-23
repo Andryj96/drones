@@ -56,7 +56,7 @@ class Drone(GenericModel):
         verbose_name_plural = 'Drones'
 
     def __str__(self):
-        return f'{self.model} - {self.serial_no} '
+        return f'{self.model} - {self.serial_no}'
 
     def add_battery_log(self):
         pass
@@ -66,7 +66,7 @@ class Medication(GenericModel):
     name = models.CharField(max_length=100)
     weight = models.PositiveSmallIntegerField()
     code = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='medication/')
+    image = models.ImageField(upload_to='medication/', blank=True)
 
     class Meta:
         verbose_name = 'Medication'
