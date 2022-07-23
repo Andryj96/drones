@@ -3,9 +3,10 @@ from rest_framework import routers
 from apps.core import views
 router = routers.DefaultRouter()
 
-router.register(r'drones/list', views.Drones)
+router.register(r'drones/list', views.Drones, basename='drones')
 router.register(r'drones/detail', views.DroneDetail)
-router.register(r'drones/available', views.AvailableDrones)
+router.register(r'drones/available', views.AvailableDrones,
+                basename='available-drones')
 router.register(r'drones/load', views.DroneLoading)
 router.register(r'drones/log', views.DroneLogs)
 router.register(r'medications/list', views.Medications)
