@@ -10,3 +10,6 @@ COPY requeriments.txt /code/
 RUN pip install -r requeriments.txt
 
 COPY . /code/
+
+# remove windows endline
+RUN sed -i 's/\r$//g' /code/start.sh

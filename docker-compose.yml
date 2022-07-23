@@ -10,7 +10,7 @@ services:
 
   backend:
     build: .
-    command: sh -c '/code/start.sh'
+    command: sh /code/start.sh
     volumes:
       - .:/code
       - drones-static:/code/static
